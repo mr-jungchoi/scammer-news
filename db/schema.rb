@@ -10,12 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205150740) do
+ActiveRecord::Schema.define(version: 20161205151738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.string   "text"
+    t.integer  "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_articles_on_author_id", using: :btree
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string   "text"
+    t.integer  "article_id"
+    t.integer  "commenter_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["article_id"], name: "index_comments_on_article_id", using: :btree
+    t.index ["commenter_id"], name: "index_comments_on_commenter_id", using: :btree
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_foreign_key "comments", "articles"
 end
