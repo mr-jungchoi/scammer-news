@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment.commenter = current_user
 
     if @comment.save
-      redirect_to 'articles/show'
+      redirect_to article_path(@article)
     else
       @errors = @comment.errors.full_messages
 

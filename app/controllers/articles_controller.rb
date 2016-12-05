@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
   def show
     if @article
       @comment = Comment.new
-      
+
       render 'articles/show'
     else
       redirect_to root_path
@@ -24,7 +24,6 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.new(article_params)
 
     if @article.save
-      # redirect_to user_article_path(:user_id => current_user.id)
       redirect_to @article
     else
       @errors = @article.errors.full_messages
