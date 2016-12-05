@@ -8,6 +8,8 @@ class ArticlesController < ApplicationController
 
   def show
     if @article
+      @comment = Comment.new
+      
       render 'articles/show'
     else
       redirect_to root_path

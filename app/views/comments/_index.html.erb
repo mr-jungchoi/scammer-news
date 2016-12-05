@@ -1,0 +1,10 @@
+<div class="container">
+ <% if comments %>
+    <% comments.each do |comment| %>
+      <ul>
+        <li><%= comment.text %></li>
+        <li>- <%= comment.commenter.username %></li>
+      </ul>
+    <% end %>
+  <% end %>
+</div>

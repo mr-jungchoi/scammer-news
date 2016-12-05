@@ -23,4 +23,12 @@ class ApplicationController < ActionController::Base
   def find_user
     @user = User.find_by_id(params[:id])
   end
+
+  def find_comment
+    @comment = Comment.find_by_id(params[:id])
+  end
+
+  def find_article_for_comment
+    @article = Article.find_by_id(params[:article_id])
+  end
 end
