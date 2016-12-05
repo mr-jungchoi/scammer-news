@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
   def show
+    find_user
+
+    if @user
+      render 'users/show'
+    else
+      redirect_to '/404'
+    end
   end
 
   def new

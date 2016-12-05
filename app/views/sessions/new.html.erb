@@ -2,7 +2,7 @@
 
 <%= render 'shared/errors' %>
 
-<%= form_tag({controller: "sessions", action: "create"}, class: "login_form") do %>
+<%= form_tag({controller: "sessions", action: "login"}, class: "login_form") do %>
   <%= label_tag(:username)%>
   <%= text_field_tag(:username)%>
   <%= label_tag(:password)%>

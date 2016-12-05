@@ -1,0 +1,9 @@
+<div class="container">
+  <%= form_for @article, url: {action: 'update'} do |article_form| %>
+    <%= article_form.label :title %><br>
+    <%= article_form.text_field :title %>
+    <%= article_form.label :text %><br>
+    <%= article_form.text_area :text %>
+    <%= article_form.submit "Edit article" %>
+  <% end %>
+</div>

@@ -18,9 +18,9 @@
           <li><a href="/">Home</a></li>
           <% if logged_in? %>
           <li><a href="/users/<%= current_user.id %>"><%= current_user.username %></a></li>
-          <li><%= link_to 'Log Out', sessions_path, method: :delete %></li>
+          <li><%= link_to 'Log Out', "/logout", method: :delete %></li>
           <% else %>
-          <li><a href="/sessions/new">Log In</a></li>
+          <li><a href="/login">Log In</a></li>
           <li><a href="/users/new">Register</a></li>
           <% end %>
         </ul>
