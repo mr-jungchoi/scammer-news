@@ -1,9 +1,8 @@
 class SessionsController < ApplicationController
- def new
+  def new
+  end
 
- end
-
- def create
+  def create
    @user = User.find_by_username(params[:username]).try(:authenticate, params[:password])
    if @user
      session[:user_id] = @user.id
@@ -12,11 +11,10 @@ class SessionsController < ApplicationController
      @errors = ["This username/password combination does not match."]
      render 'sessions/new'
    end
- end
+  end
 
- def destroy
+  def destroy
    session.clear
    redirect_to root_path
- end
-
+  end
 end
