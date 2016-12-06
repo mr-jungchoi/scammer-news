@@ -1,3 +1,16 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users do
+    resources :articles, except: :show
+  end
+
+  resources :articles, only: [:index, :show] do
+    resources :comments
+  end
+
+  #  breaking convention here with the following line, because sessions are not conventional by nature
+  get '/login' => 'sessions#new'
+  post '/sessions' => 'sessions#login'
+  delete '/logout' => 'sessions#logout'
+
+  root 'articles#index'
 end

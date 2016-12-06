@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>
+    <%= @article.title %>
+  </h1>
+  <p>
+    <%= @article.text %>
+  </p>
+
+  <h2>Comments:</h2>
+  <p><%= render partial: 'comments/index', locals: {comments: @article.comments} %></p>
+  <p><%= render partial: 'comments/new' %></p>
+
+  <% if logged_in? && authorized?(@article.author) %>
+  <%= link_to "Edit", edit_user_article_path(@article) %>
+  <%= link_to "Delete", user_article_path(@article), method: :delete %>
+  <% end %>
+</div>

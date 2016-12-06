@@ -1,0 +1,8 @@
+<div class="container">
+  <%= render partial: 'shared/errors' %>
+  <%= form_for @comment, url: article_comments_path(@article) do |comment_form| %>
+    <%= comment_form.label :text %><br>
+    <%= comment_form.text_area :text %>
+    <%= comment_form.submit "Add comment" %>
+  <% end %>
+</div>

@@ -5,10 +5,27 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <%= javascript_include_tag 'application' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   </head>
 
   <body>
+    <nav>
+      <div class="nav-wrapper black">
+        <a href="#" class="brand-logo">Scammer News</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/">Home</a></li>
+          <% if logged_in? %>
+          <li><a href="/users/<%= current_user.id %>"><%= current_user.username %></a></li>
+          <li><%= link_to 'Log Out', "/logout", method: :delete %></li>
+          <% else %>
+          <li><a href="/login">Log In</a></li>
+          <li><a href="/users/new">Register</a></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
