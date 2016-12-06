@@ -5,8 +5,8 @@
         <li><%= comment.text %></li>
         <li>- <%= comment.commenter.username %></li>
         <% if logged_in? && authorized?(comment.commenter) %>
-        <%= link_to "Edit", edit_article_comment_path(comment) %>
-        <%= link_to "Delete", article_comment_path(comment), method: :delete %>
+        <%= link_to "Edit", edit_article_comment_path(article) %>
+        <%= link_to "Delete", article_comment_path(article), method: :delete %>
         <% end %>
       </ul>
     <% end %>
